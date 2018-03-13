@@ -1,0 +1,58 @@
+{
+    "name": "CMDB Configuration template",
+    "description": "Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server.",
+    "version": "1.0",
+    "imageUrl": "",
+    "image": "",
+    "type": "integration",
+    "status": "active",
+    "manifest": {
+      "template_type": "Terraform",
+      "template_format": "HCL",
+      "template_provider": "Other",
+      "template": {
+        "templateData": "",
+        "templateVariables": "",
+        "templateOutput": ""
+      },
+      "template_source": {
+        "githubRepoUrl": "",
+        "githubAccessToken": "",
+        "relativePathToTemplateFolder": "other/terraform",
+        "templateFileName": "main.tf"
+      }
+    },
+    "metadata": {
+      "displayName": "CMDB Configuration template",
+      "providerDisplayName": "Other",
+      "longDescription": "Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server.",
+      "bullets": [{
+    "title": "Clouds",
+    "description": " All Clouds<br>"},
+{
+    "title": "Operating Systems Supported",
+    "description": "Not applicable, run locally on the Terraform Server."},
+{
+    "title": "Topology",
+    "description": "Not applicable.<br>"},
+{
+    "title": "Software Deployed",
+    "description": "Create and Remove a CMDB Record in Service Now.<br>"},
+{
+    "title": "Default Virtual Machine Settings",
+    "description": "python ServiceNow module deployed on the Terraform container.<br>"},
+{
+    "title": "Usage and Special Notes",
+    "description": "1. A Service Now instance must be available.<br>2. The Service Now instance must be network accessible from the Terraform container.</br>"
+}
+],
+      "featuredImageUrl": "",
+      "imageUrl": "",
+      "mediumImageUrl": "",
+      "smallImageUrl": "",
+      "documentationUrl": "",
+      "termsUrl": "",
+      "media": [
+      ]
+    }
+}
