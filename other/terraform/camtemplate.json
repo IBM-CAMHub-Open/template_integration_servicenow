@@ -1,5 +1,5 @@
 {
-    "name": "CMDB Configuration template",
+    "name": "Service Now CMDB Configuration Template",
     "description": "Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server.",
     "version": "1.0",
     "imageUrl": "",
@@ -23,9 +23,9 @@
       }
     },
     "metadata": {
-      "displayName": "CMDB Configuration template",
+      "displayName": "Service Now CMDB Configuration Template",
       "providerDisplayName": "Other",
-      "longDescription": "Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server.",
+      "longDescription": "Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server. This integration template is responsible for the create of a Service Now CMDB record and is designed to be chained after the creation of a server. Upon deletion of a server, the template will delete the CMDB record from Service Now.",
       "bullets": [{
     "title": "Clouds",
     "description": " All Clouds<br>"},
@@ -40,10 +40,10 @@
     "description": "Create and Remove a CMDB Record in Service Now.<br>"},
 {
     "title": "Default Virtual Machine Settings",
-    "description": "python ServiceNow module deployed on the Terraform container.<br>"},
+    "description": "python ServiceNow module deployed on the Terraform container.<br>This integration script is run locally on the terraform container.<br>"},
 {
     "title": "Usage and Special Notes",
-    "description": "1. A Service Now instance must be available.<br>2. The Service Now instance must be network accessible from the Terraform container.</br>"
+    "description": "1. A Service Now instance must be available.<br>2. The Service Now instance must be network accessible from the Terraform container.</br>3. Upon deletion, the CMDB record is removed from Service Now.<br>"
 }
 ],
       "featuredImageUrl": "",

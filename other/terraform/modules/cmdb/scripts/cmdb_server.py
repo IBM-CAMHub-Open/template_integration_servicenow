@@ -8,6 +8,7 @@
 # disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
 # ===============================================================
 
+import sys
 import argparse
 import json
 
@@ -32,14 +33,29 @@ def create_cmdb(cmdb_server, cmdb_key, cmdb_record):
     Create a CMDB Record, update if already exists. We assume that the name attribute should be unique
     and that a subsequent create will invoke an update.
     """
-
-    cmdb_records = cmdb_server.list({'name': cmdb_key})
+    try:
+        cmdb_records = cmdb_server.list({'name': cmdb_key})
+    except ConnectionError, e:
+        sys.stderr.write("cmdb_create: Error Connecting to CMDB: %s\n" %e)
+        exit(1)
+    except ValueError:
+        sys.stderr.write("cmdb_create: Error Connecting to CMDB, likely a user or password issue.\n")
+        exit(1)
+        
     if len(cmdb_records['records']) == 0:
-        print "create_cmdb: Record with name:" + cmdb_key + " does not exist, creating."
-        cmdb_response = cmdb_server.create(cmdb_record)
+        sys.stderr.write("create_cmdb: Record with name: %s does not exist, creating.\n" %cmdb_key)
+        try:
+            cmdb_response = cmdb_server.create(cmdb_record)
+        except:
+            sys.stderr.write("create_cmdb: Error creating CMDB Record")
+            exit(1)
     else:
-        print "create_cmdb: Record with name:" + cmdb_key + " already exists, updating."
-        cmdb_response = cmdb_server.update({'name': cmdb_key}, cmdb_record)
+        sys.stderr.write("create_cmdb: Record with name: %s already exists, updating.\n" %cmdb_key)
+        try:
+            cmdb_response = cmdb_server.update({'name': cmdb_key}, cmdb_record)
+        except:
+            sys.stderr.write("create_cmdb: Error updating CMDB Record")
+            exit(1)
     return cmdb_response
 
 def delete_cmdb(cmdb_server, cmdb_key):
@@ -48,16 +64,28 @@ def delete_cmdb(cmdb_server, cmdb_key):
     Delete a CMDB Record. Assume name is unique, deletion happens using sys_id.
     """
 
-    cmdb_records = cmdb_server.list({'name': cmdb_key})
+    try:
+        cmdb_records = cmdb_server.list({'name': cmdb_key})
+    except ConnectionError, e:
+        sys.stderr.write("cmdb_delete: Error Connecting to CMDB: %s\n" %e)
+        exit(1)
+    except ValueError:
+        sys.stderr.write("cmdb_delete: Error Connecting to CMDB, likely a user or password issue.\n")
+        exit(1)
+
     if len(cmdb_records['records']) == 0:
-        print "delete_cmdb: Record with name:" + cmdb_key + " does not exist, can not delete."
-        return None
+        sys.stderr.write("delete_cmdb: Record with name: %s does not exist, can not delete.\n" %cmdb_key)
+        exit(0)
     elif len(cmdb_records['records']) == 1:
-        print "delete_cmdb: Record with name:" + cmdb_key + " found, deleting."
-        cmdb_response = cmdb_server.delete(cmdb_records['records'][0])
+        sys.stderr.write("delete_cmdb: Record with name: %s found, deleting.\n" %cmdb_key)
+        try:
+            cmdb_response = cmdb_server.delete(cmdb_records['records'][0])
+        except:
+            sys.stderr.write("delete_cmdb: Error deleting CMDB Record")
+            exit(1)
     else:
         print "delete_cmdb: Multiple records with name:" + cmdb_key + " found, not deleting."
-        return None
+        exit(1)
     return cmdb_response
 
 
@@ -91,6 +119,10 @@ def main():
 
     #Get Server Object
     cmdb_server = ServiceNow.Server(cmdb_conn)
+
+    #if not cmdb_server.list({'name': args.cmdb_key}):
+    #  sys.stderr.write('cmdb_server: Error Connecting to CMDB.')
+    #  exit(1)
 
     # Process Request
     if args.create:

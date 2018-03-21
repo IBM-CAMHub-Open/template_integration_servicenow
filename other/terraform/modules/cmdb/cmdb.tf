@@ -16,6 +16,7 @@ resource "camc_scriptpackage" "cmdb_create" {
 }
 
 resource "camc_scriptpackage" "cmdb_delete" {
+  depends_on = ["camc_scriptpackage.cmdb_create"] 
   program = ["/usr/bin/python", "${path.module}/scripts/cmdb_server.py", "-d", "-u", "${var.cmdb_user}", "-p", "${var.cmdb_pass}", "-i", "${var.cmdb_instance}", "-k", "${var.cmdb_key}"]
   on_delete = true
 }

@@ -3,7 +3,7 @@
     {
       "name": "cmdb_user",
       "type": "string",
-      "description": "Service Now User",
+      "description": "ServiceNow Administrative user.",
       "hidden": false,
       "label": "cmdb_user",
       "secured": false,
@@ -14,7 +14,7 @@
     {
       "name": "cmdb_pass",
       "type": "string",
-      "description": "Service Now Password",
+      "description": "ServiceNow Administrative Password.",
       "hidden": false,
       "label": "cmdb_pass",
       "secured": true,
@@ -26,7 +26,7 @@
     {
       "name": "cmdb_instance",
       "type": "string",
-      "description": "Service Now Instance Location",
+      "description": "Service Now Instance name.",
       "hidden": false,
       "label": "cmdb_instance",
       "secured": false,
@@ -37,7 +37,7 @@
     {
       "name": "cmdb_key",
       "type": "string",
-      "description": "CMDB Unique Record Key, maps to the name field",
+      "description": "CMDB Unique Record Key, maps to the name field.",
       "hidden": false,
       "label": "cmdb_key",
       "secured": false,
@@ -48,7 +48,7 @@
     {
       "name": "cmdb_record",
       "type": "map",
-      "description": "CMDB JSON Record",
+      "description": "CMDB JSON Record. The name field must match the cmdb_key field above. Add or remove fields as neccessary.",
       "hidden": false,
       "label": "cmdb_record",
       "secured": false,

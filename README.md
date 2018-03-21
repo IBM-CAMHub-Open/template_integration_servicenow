@@ -1,13 +1,15 @@
-# Integration - ServiceNow CMDB
+# Service Now CMDB Configuration Template
 Copyright IBM Corp. 2018, 2018
+This code is released under the Apache 2.0 License.
+
 
 ## Description
 
-Integration to manage the creation and deletion of CMDB records as a part of deploying a Virtual Machine. This template will execute a python script on the local Terraform container.
+Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server. This integration template is responsible for the create of a Service Now CMDB record and is designed to be chained after the creation of a server. Upon deletion of a server, the template will delete the CMDB record from Service Now.
 
 ## Integration Method
 
-Script local.
+Local to the terraform container.
 
 ## Orchestration Reccomendation
 
@@ -18,11 +20,15 @@ This script should be executed after the successful execution of a Terraform Tem
 - **on_create** Create the CMDB Record or update the CMDB record if an existing record already exists.
 - **on_delete** Delete the CMDB Record.
 
+NOTE: On Plan/Apply, the on_delete method will not be executed.
+
 ## Prerequisites
 
-- A working version of Service Now addressable from the Terraform Engine.
+- A working version of ServiceNow addressable from the Terraform Engine.
 - The Terraform container requires the **servicenow** module installed.
 - The Terraform container requires that **python 2.7** is installed.
+
+## Input Parameters
 
 <table>
   <tr>
@@ -51,6 +57,6 @@ This script should be executed after the successful execution of a Terraform Tem
   </tr>
   <tr>
     <td>cmdb_record</td>
-    <td>A MAp of values that constitute the CMDB Record. The structure is user defined and should follow the fields describe in the ServiceNow ci_cmdb_server record. The only mandatory value is the name field.</td>
+    <td>A MAP of values that constitute the CMDB Record. The structure is user defined and should follow the fields describe in the ServiceNow ci_cmdb_server record. The only mandatory value is the name field.</td>
   </tr>
 </table>
