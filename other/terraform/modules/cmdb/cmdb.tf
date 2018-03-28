@@ -1,9 +1,18 @@
 # =================================================================
-# Licensed Materials - Property of IBM
-# 5737-E67
-# @ Copyright IBM Corporation 2016, 2017 All Rights Reserved
-# US Government Users Restricted Rights - Use, duplication or disclosure
-# restricted by GSA ADP Schedule Contract with IBM Corp.
+# Copyright 2018 IBM Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+#	you may not use this file except in compliance with the License.
+#	You may obtain a copy of the License at
+#
+#	  http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+#	WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 # =================================================================
 
 ##############################################################
@@ -16,7 +25,7 @@ resource "camc_scriptpackage" "cmdb_create" {
 }
 
 resource "camc_scriptpackage" "cmdb_delete" {
-  depends_on = ["camc_scriptpackage.cmdb_create"] 
+  depends_on = ["camc_scriptpackage.cmdb_create"]
   program = ["/usr/bin/python", "${path.module}/scripts/cmdb_server.py", "-d", "-u", "${var.cmdb_user}", "-p", "${var.cmdb_pass}", "-i", "${var.cmdb_instance}", "-k", "${var.cmdb_key}"]
   on_delete = true
 }

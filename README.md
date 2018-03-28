@@ -1,17 +1,17 @@
-# Service Now CMDB Configuration Template
+# ServiceNow CMDB Configuration Template
 Copyright IBM Corp. 2018, 2018
 This code is released under the Apache 2.0 License.
 
 
 ## Description
 
-Service Now CMDB configuration record to add and remove CMDB records on create and delete of a server. This integration template is responsible for the create of a Service Now CMDB record and is designed to be chained after the creation of a server. Upon deletion of a server, the template will delete the CMDB record from Service Now.
+ServiceNow CMDB configuration record to add and remove CMDB records on create and delete of a server. This integration template is responsible for the create of a ServiceNow CMDB record and is designed to be chained after the creation of a server. Upon deletion of a server, the template will delete the CMDB record from ServiceNow.
 
 ## Integration Method
 
 Local to the terraform container.
 
-## Orchestration Reccomendation
+## Orchestration Recommendation
 
 This script should be executed after the successful execution of a Terraform Template to register the Server Assets in CMDB.
 
@@ -37,7 +37,7 @@ NOTE: On Plan/Apply, the on_delete method will not be executed.
   </tr>
   <tr>
     <td>cmdb_pass</td>
-    <td>User to connect to Service Now</td>
+    <td>User to connect to ServiceNow</td>
   </tr>
   <tr>
     <td>cmdb_user</td>
@@ -45,7 +45,7 @@ NOTE: On Plan/Apply, the on_delete method will not be executed.
   </tr>
   <tr>
     <td>cmdb_instance</td>
-    <td>Target Service Now instance.</td>
+    <td>Target ServiceNow instance.</td>
   </tr>
   <tr>
     <td>cmdb_key</td>
