@@ -13,7 +13,7 @@
     },
     {
       "name": "cmdb_pass",
-      "type": "string",
+      "type": "password",
       "description": "ServiceNow Administrative Password.",
       "hidden": false,
       "label": "cmdb_pass",
