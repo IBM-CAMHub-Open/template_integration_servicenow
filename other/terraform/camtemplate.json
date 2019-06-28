@@ -23,7 +23,6 @@
       }
     },
     "metadata": {
-      "displayName": "ServiceNow CMDB Configuration Template",
       "providerDisplayName": "Other",
       "longDescription": "ServiceNow CMDB configuration record to add and remove CMDB records on create and delete of a server. This integration template is responsible for the create of a ServiceNow CMDB record and is designed to be chained after the creation of a server. Upon deletion of a server, the template will delete the CMDB record from ServiceNow.",
       "bullets": [{
