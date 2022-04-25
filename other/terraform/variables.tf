@@ -19,8 +19,30 @@
 # COMMAND VARIABLES
 ##############################################################
 
-variable "cmdb_user" { type = "string" description = "ServiceNow User." default = "admin" }
-variable "cmdb_pass" { type = "string" description = "ServiceNow Password"}
-variable "cmdb_instance" { type = "string" description = "ServiceNow Instance Location" }
-variable "cmdb_key" { type = "string" description = "CMDB Unique Record Key, maps to the name field" default = "server1"}
-variable "cmdb_record" { type = "map" description = "CMDB MAP Record" }
+variable "cmdb_user" {
+  type        = string
+  description = "ServiceNow User."
+  default     = "admin"
+}
+
+variable "cmdb_pass" {
+  type        = string
+  description = "ServiceNow Password"
+}
+
+variable "cmdb_instance" {
+  type        = string
+  description = "ServiceNow Instance Location"
+}
+
+variable "cmdb_key" {
+  type        = string
+  description = "CMDB Unique Record Key, maps to the name field"
+  default     = "server1"
+}
+
+variable "cmdb_record" {
+  type        = map(string)
+  description = "CMDB MAP Record"
+}
+
