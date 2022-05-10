@@ -1,7 +1,7 @@
 {
-    "name": "ServiceNow CMDB Configuration Template",
+    "name": "ServiceNow CMDB Configuration Template for Terraform 1.x.x",
     "description": "ServiceNow CMDB configuration record to add and remove CMDB records on create and delete of a server.",
-    "version": "1.0",
+    "version": "2.1",
     "imageUrl": "",
     "image": "",
     "type": "integration",
